@@ -1,0 +1,122 @@
+.img_card {
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
+}
+
+.card_title {
+   font-size: 1.5em;
+   line-height: normal;
+   font-weight: 700;
+   margin-bottom: 0.5em;
+   text-decoration: none;
+   background-image: linear-gradient(135deg, #fccf31 10%, #f55555 100%);
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+}
+
+.text_to_details {
+   text-decoration: none;
+   margin: none;
+}
+
+.card {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   position: relative;
+   width: 15rem;
+   height: 25rem;
+   background-color: #ffffff50;
+   border-radius: 10px;
+   padding: 2em 1.2em;
+   z-index: 0;
+   overflow: hidden;
+   font-family: "Lato", sans-serif;
+   background: linear-gradient(145deg, #cacaca50, #f0f0f050);
+   box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff30;
+}
+
+.card:before {
+   content: "";
+   position: absolute;
+   z-index: -1;
+   top: -16px;
+   right: -16px;
+   background-image: linear-gradient(135deg, #fd6e6a 10%, #ffc600 100%);
+
+   height: 32px;
+   width: 32px;
+   border-radius: 32px;
+   transform: scale(1);
+   transform-origin: 50% 50%;
+   transition: transform 0.3s ease-out;
+}
+
+.card:hover:before {
+   transform: scale(30);
+}
+
+.card:hover .card_title {
+   background-image: linear-gradient(to right, #fff, #fff);
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   transition: all 0.5s ease-out;
+}
+
+.card:hover .diets_list {
+   transition: all 0.5s ease-out;
+   background-image: linear-gradient(to right, #fff, #fff);
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+}
+
+.card:hover .diets_title {
+   transition: all 0.5s ease-out;
+   background-image: linear-gradient(to right, #fff, #fff);
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+}
+
+.diets_list {
+   background-image: linear-gradient(135deg, #fccf31 10%, #f55555 100%);
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+}
+
+.diets_title {
+   color: #000;
+   background-image: linear-gradient(135deg, #fccf31 10%, #f55555 100%);
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+}
+
+.go_corner {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   position: absolute;
+   width: 2em;
+   height: 2em;
+   overflow: hidden;
+   top: 0;
+   right: 0;
+   background-color: #ffe53b;
+   background-image: linear-gradient(147deg, #ffe53b 0%, #ff2525 74%);
+
+   border-radius: 0 4px 0 32px;
+}
+
+.go_arrow {
+   margin-top: -0.6rem;
+   margin-right: -0.2rem;
+   color: white;
+   font-family: courier, sans;
+}

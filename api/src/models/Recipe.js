@@ -31,6 +31,19 @@ module.exports = (sequelize) => {
             type: DataTypes.JSON,
             allowNull: true,
             defaultValue: [],
+            get() {
+               // Obtener las plataformas como un array
+               const summaryString = this.getDataValue("summary");
+               return summaryString ? summaryString.split(".") : [];
+            },
+            set(value) {
+               // Almacenar las plataformas como un string separado por comas
+               if (Array.isArray(value)) {
+                  this.setDataValue("summary", value.join("."));
+               } else {
+                  this.setDataValue("summary", value);
+               }
+            },
          },
       },
       { freezeTableName: true, timestamps: false }

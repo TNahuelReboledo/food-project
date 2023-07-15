@@ -27,12 +27,21 @@ const getAllRecipes = async (req, res) => {
                steps: recipe.analyzedInstructions.map((instruction) =>
                   instruction.steps.map((steps) => steps.step)
                ),
+               diets: recipe.diets.map((diet) =>{ return {name: diet}})
             })
       );
 
       recipesApi.push(...allRecipes);
 
-      const recipesDB = await Recipe.findAll();
+      const recipesDB = await Recipe.findAll({
+         include: {
+            model: Diet,
+            attributes: ["name"],
+            through:{ 
+               attributes: []
+            }
+         },
+      });
 
       const recipesDBandApi = [...recipesApi, ...recipesDB]
 
