@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import style from "./Form.module.css";
 import { allDiets } from "../../redux/actions";
+import { NavLink } from "react-router-dom";
 
 function Form() {
    const dispatch = useDispatch();
@@ -36,7 +37,6 @@ function Form() {
       try {
          await axios.post(`http://localhost:3001/recipes`, form);
          alert(`receta creada`);
-
       } catch (error) {
          alert(`No se pudo crear la receta`);
       }
@@ -179,10 +179,10 @@ function Form() {
             steps: "It must be available on at least two steps.",
          });
       } else {
-         if (!form.steps.includes(",")) {
+         if (!form.steps.includes(".")) {
             setErrors({
                ...errors,
-               steps: `steps must be separated by commas ( , )`,
+               steps: `steps must be separated by dot ( . )`,
             });
          } else {
             setErrors({ ...errors, steps: "" });
@@ -192,7 +192,7 @@ function Form() {
 
    const validationCheeckbox = (diets) => {
       if (diets.length === 0) {
-         setErrors({ ...errors, diets: "You must choose at least one genre" });
+         setErrors({ ...errors, diets: "You must choose at least one diet" });
       } else {
          setErrors({ ...errors, diets: "" });
       }
@@ -203,77 +203,145 @@ function Form() {
    }, [form.diets]);
 
    return (
-      <div className={style.form_container}>
-         <form onSubmit={handlerSubmit}>
-            <input
-               type="text"
-               value={form.name}
-               name="name"
-               onChange={handleChangeName}
-               placeholder="insert name"
-               autoComplete="off"
-            />
-            {errors.name && <div>{errors.name}</div>}
+      <div className={style.view_form}>
 
-            <input
-               type="text"
-               value={form.image}
-               name="image"
-               onChange={handleChangeImage}
-               placeholder="https://www.example.com/image.png"
-               autoComplete="off"
-            />
-            {errors.image && <div>{errors.image}</div>}
+         <div className={style.form_container}>
+            <div className={style.nav_button_container_home}>
+               <NavLink to="/home">
+                  <button className={style.button_to_home}>back to home</button>
+               </NavLink>
+            </div>
 
-            <input
-               type="text"
-               value={form.summary}
-               name="summary"
-               onChange={handleChangeSummary}
-               placeholder="insert summary"
-               autoComplete="off"
-            />
-            {errors.summary && <div>{errors.summary}</div>}
+            <form onSubmit={handlerSubmit}>
+               <h1 className={style.title_create}>Create new recipe</h1>
+               <div className={style.input_container}>
+                  <input
+                     type="text"
+                     value={form.name}
+                     name="name"
+                     onChange={handleChangeName}
+                     placeholder="insert name"
+                     autoComplete="off"
+                  />
+                  {errors.name && (
+                     <div className={style.errores}>{errors.name}</div>
+                  )}
+               </div>
 
-            <input
-               type="text"
-               value={form.healthScore}
-               name="healthScore"
-               onChange={handleChangeHealtScore}
-               placeholder="health score ( 0 - 100 )"
-               autoComplete="off"
-            />
-            {errors.healthScore && <div>{errors.healthScore}</div>}
+               <div className={style.input_container}>
+                  <input
+                     type="text"
+                     value={form.image}
+                     name="image"
+                     onChange={handleChangeImage}
+                     placeholder="https://www.example.com/image.png"
+                     autoComplete="off"
+                  />
+                  {errors.image && (
+                     <div className={style.errores}>{errors.image}</div>
+                  )}
+               </div>
 
-            <input
-               type="text"
-               value={form.steps}
-               name="steps"
-               onChange={handleChangeSteps}
-               placeholder="insert steps"
-               autoComplete="off"
-            />
-            {errors.steps && <div>{errors.steps}</div>}
+               <div className={style.input_container}>
+                  <input
+                     type="text"
+                     value={form.summary}
+                     name="summary"
+                     onChange={handleChangeSummary}
+                     placeholder="insert summary"
+                     autoComplete="off"
+                  />
+                  {errors.summary && (
+                     <div className={style.errores}>{errors.summary}</div>
+                  )}
+               </div>
 
-            {diets.map((diet) => {
-               return (
-                  <div>
-                     {diet.name}
-                     <input
-                        type="checkbox"
-                        onChange={handleChecked}
-                        value={diet.name}
-                        name="diets"
+               <div className={style.input_container}>
+                  <input
+                     type="text"
+                     value={form.healthScore}
+                     name="healthScore"
+                     onChange={handleChangeHealtScore}
+                     placeholder="health score ( 0 - 100 )"
+                     autoComplete="off"
+                  />
+                  {errors.healthScore && (
+                     <div className={style.errores}>{errors.healthScore}</div>
+                  )}
+               </div>
+
+               <div className={style.input_container}>
+                  <input
+                     type="text"
+                     value={form.steps}
+                     name="steps"
+                     onChange={handleChangeSteps}
+                     placeholder="insert steps"
+                     autoComplete="off"
+                  />
+                  {errors.steps && (
+                     <div className={style.errores}>{errors.steps}</div>
+                  )}
+               </div>
+
+               <div className={style.all_checkbox_container}>
+                  {diets.map((diet) => {
+                     return (
+                        <div className={style.container}>
+                           <label className={style.checkBox}>
+                              <input
+                                 type="checkbox"
+                                 onChange={handleChecked}
+                                 value={diet.name}
+                                 name="diets"
+                                 className={style.ch1}
+                              />
+                              <div className={style.transition}></div>
+                           </label>
+                           {diet.name}
+                        </div>
+                     );
+                  })}
+               </div>
+               {errors.diets && (
+                  <div className={style.errores_check}>{errors.diets}</div>
+               )}
+
+               {(Object.values(form).some((data) => data === "") &&
+                  Object.values(form).some((data) => data === [])) ||
+               Object.values(errors).some((data) => data !== "") ? (
+                  <button
+                     className={style.submit_button_disabled}
+                     type="submit">
+                     submit
+                  </button>
+               ) : (
+                  <div className={style.submit_button_container}>
+                     <button className={style.submit_button} type="submit">
+                        submit
+                     </button>
+                  </div>
+               )}
+            </form>
+         </div>
+
+         <div className={style.card_container}>
+            <div className={style.card}>
+               {form.image === "" ? (
+                  <div className={style.card_inner}>
+                     <img
+                        className={style.image_URL}
+                        src="https://cannamazoo.com/assets/defaults/img/default-product-img.jpg"
+                        alt="no image"
                      />
                   </div>
-               );
-            })}
-            {errors.diets && (
-               <div className={style.errores}>{errors.diets}</div>
-            )}
-
-            <button type="submit">submit</button>
-         </form>
+               ) : (
+                  <div className={style.card_inner}>
+                     <img className={style.image_URL} src={form.image} alt="" />
+                  </div>
+               )}
+            </div>
+         </div>
       </div>
    );
 }

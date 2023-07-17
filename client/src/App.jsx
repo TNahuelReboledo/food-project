@@ -8,7 +8,7 @@ function App() {
 
    return (
       <>
-         {location.pathname !== "/" && <NavBar />}
+         {location.pathname !== "/" && location.pathname !== "/form" && <NavBar />}
          <Routes>
             <Route exact path="/" element={<Landing />} />
             <Route exact path="/home" element={<Home />} />
