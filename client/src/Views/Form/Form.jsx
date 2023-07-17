@@ -234,7 +234,7 @@ function Form() {
                      value={form.image}
                      name="image"
                      onChange={handleChangeImage}
-                     placeholder="https://www.example.com/image.png"
+                     placeholder="insert image: https://www.example.com/image.png"
                      autoComplete="off"
                   />
                   {errors.image && (
@@ -262,7 +262,7 @@ function Form() {
                      value={form.healthScore}
                      name="healthScore"
                      onChange={handleChangeHealtScore}
-                     placeholder="health score ( 0 - 100 )"
+                     placeholder="insert health score ( 0 - 100 )"
                      autoComplete="off"
                   />
                   {errors.healthScore && (
@@ -284,6 +284,7 @@ function Form() {
                   )}
                </div>
 
+                  <div className={style.diets_title}>diets:</div>
                <div className={style.all_checkbox_container}>
                   {diets.map((diet) => {
                      return (
@@ -307,7 +308,7 @@ function Form() {
                   <div className={style.errores_check}>{errors.diets}</div>
                )}
 
-               {(Object.values(form).some((data) => data === "") &&
+               {(Object.values(form).some((data) => data === "") ||
                   Object.values(form).some((data) => data === [])) ||
                Object.values(errors).some((data) => data !== "") ? (
                   <button

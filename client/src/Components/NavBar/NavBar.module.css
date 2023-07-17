@@ -4,8 +4,7 @@
    align-items: center;
    width: 100vw;
    background-color: transparent;
-   margin-top: 1rem;
-   margin-bottom: 1.5rem;
+   overflow: auto;
 }
 
 .svg_waves_container {
@@ -35,6 +34,13 @@
    width: 100%;
    margin-left: 1rem;
    margin-right: 1rem;
+}
+
+.left_button_SB{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: -2rem;
 }
 
 .button_to_home,

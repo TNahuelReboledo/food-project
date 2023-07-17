@@ -1,9 +1,130 @@
-.cards_container{
-    padding: 1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+.cards_container {
+   padding: 1rem;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   flex-wrap: wrap;
+   gap: 1rem;
+   position: relative;
+   z-index: 9999;
+   margin-bottom: 3rem;
+   margin-top: 5rem;
+}
 
+.buttons_container {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   height: 6rem;
+   padding-bottom: 3rem;
+   position: absolute;
+   width: 100%;
+}
+
+.buttons_container button {
+   z-index: 1;
+
+   width: 5rem;
+   height: 5rem;
+   background-color: #fff;
+   border: none;
+   border-radius: 100%;
+
+   color: #f57323;
+   transition: all 0.3s;
+   cursor: pointer;
+}
+
+.buttons_container button:hover {
+   scale: 1.1;
+}
+
+.buttons_container button:disabled:hover {
+   scale: 1;
+}
+
+.buttons_container button:disabled:hover {
+   filter: blur(2px);
+   -webkit-animation: shake-horizontal 0.8s
+      cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+   animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+
+@-webkit-keyframes shake-horizontal {
+   0%,
+   100% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+   }
+   10%,
+   30%,
+   50%,
+   70% {
+      -webkit-transform: translateX(-10px);
+      transform: translateX(-10px);
+   }
+   20%,
+   40%,
+   60% {
+      -webkit-transform: translateX(10px);
+      transform: translateX(10px);
+   }
+   80% {
+      -webkit-transform: translateX(8px);
+      transform: translateX(8px);
+   }
+   90% {
+      -webkit-transform: translateX(-8px);
+      transform: translateX(-8px);
+   }
+}
+@keyframes shake-horizontal {
+   0%,
+   100% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+   }
+   10%,
+   30%,
+   50%,
+   70% {
+      -webkit-transform: translateX(-10px);
+      transform: translateX(-10px);
+   }
+   20%,
+   40%,
+   60% {
+      -webkit-transform: translateX(10px);
+      transform: translateX(10px);
+   }
+   80% {
+      -webkit-transform: translateX(8px);
+      transform: translateX(8px);
+   }
+   90% {
+      -webkit-transform: translateX(-8px);
+      transform: translateX(-8px);
+   }
+}
+
+.custom_shape_divider_bottom_1689625926 {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   overflow: hidden;
+   line-height: 0;
+   transform: rotate(180deg);
+   z-index: 0;
+}
+
+.custom_shape_divider_bottom_1689625926 svg {
+   position: relative;
+   display: block;
+   width: calc(272% + 1.3px);
+   height: 299px;
+}
+
+.custom_shape_divider_bottom_1689625926 .shape_fill {
+   fill: #f57323;
 }

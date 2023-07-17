@@ -50,9 +50,7 @@ function NavBar() {
                viewBox="0 0 1200 120"
                preserveAspectRatio="none">
                <defs>
-                  <linearGradient
-                     id="myGradient"
-                     gradientTransform="rotate(0)">
+                  <linearGradient id="myGradient" gradientTransform="rotate(0)">
                      <stop offset="0%" stop-color="#c02425" />
                      <stop offset="100%" stop-color="#f0cb35" />
                   </linearGradient>
@@ -71,31 +69,48 @@ function NavBar() {
             </svg>
          </div>
          <div className={style.all_navBar_contaier}>
-            <NavLink to="/home">
-               <button className={style.button_to_home}>Home</button>
-            </NavLink>
-            <NavLink to="/form">
-               <button className={style.button_to_create}>Create+</button>
-            </NavLink>
 
-            <SearchBar />
+            <div className={style.left_button_SB}>
+               <NavLink to="/home">
+                  <button className={style.button_to_home}>Home</button>
+               </NavLink>
+               <NavLink to="/form">
+                  <button className={style.button_to_create}>Create+</button>
+               </NavLink>
+
+               <SearchBar />
+            </div>
 
             <div>
-               <button className={style.alphabetical_order_buton} onClick={handleOrder} value="A">
+               <button
+                  className={style.alphabetical_order_buton}
+                  onClick={handleOrder}
+                  value="A">
                   A-Z
                </button>
-               <button className={style.alphabetical_order_buton} onClick={handleOrder} value="B">
+               <button
+                  className={style.alphabetical_order_buton}
+                  onClick={handleOrder}
+                  value="B">
                   Z-A
                </button>
 
-               <button className={style.hs_order_button} onClick={handlerOrderHS} value="min">
+               <button
+                  className={style.hs_order_button}
+                  onClick={handlerOrderHS}
+                  value="min">
                   min health score
                </button>
-               <button className={style.hs_order_button} onClick={handlerOrderHS} value="max">
+               <button
+                  className={style.hs_order_button}
+                  onClick={handlerOrderHS}
+                  value="max">
                   max health score
                </button>
 
-               <select className={style.select_container} onChange={handleDiets}>
+               <select
+                  className={style.select_container}
+                  onChange={handleDiets}>
                   <option selected disabled>
                      filter by diet type
                   </option>
@@ -104,7 +119,9 @@ function NavBar() {
                   ))}
                </select>
 
-               <select className={style.select_container} onChange={handleStorage}>
+               <select
+                  className={style.select_container}
+                  onChange={handleStorage}>
                   <option selected disabled>
                      filter by origin
                   </option>
@@ -112,7 +129,9 @@ function NavBar() {
                   <option value="db">DataBase</option>
                </select>
 
-               <button className={style.reset_button} onClick={handleReset}>Reset filters</button>
+               <button className={style.reset_button} onClick={handleReset}>
+                  Reset filters
+               </button>
             </div>
          </div>
       </div>
