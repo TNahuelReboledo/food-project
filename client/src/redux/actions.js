@@ -10,7 +10,7 @@ export const RECIPE_BY_STORAGE_PLACE = "RECIPE_BY_STORAGE_PLACE";
 
 export const allRecipes = () => {
    return async function (dispatch) {
-      const { data } = await axios.get(`http://localhost:3001/recipes`);
+      const { data } = await axios.get(`https://food-project-production.up.railway.app/recipes`);
       const recipes = data;
       dispatch({ type: GET_ALL_RECIPES, payload: recipes });
    };
@@ -18,7 +18,7 @@ export const allRecipes = () => {
 
 export const allDiets = () => {
    return async function (dispatch) {
-      const { data } = await axios.get(`http://localhost:3001/diets`);
+      const { data } = await axios.get(`https://food-project-production.up.railway.app/diets`);
       const diets = data;
       dispatch({ type: GET_ALL_DIETS, payload: diets });
    };
@@ -28,7 +28,7 @@ export const findRecipes = (name) => {
    return async function (dispatch) {
       try {
          const { data } = await axios.get(
-            `http://localhost:3001/recipes?name=${name}`
+            `https://food-project-production.up.railway.app/recipes?name=${name}`
          );
          const recipeByName = data;
          dispatch({ type: GET_RECIPE_BY_NAME, payload: recipeByName });

@@ -8,7 +8,7 @@ function Detail() {
    const [recipe, setRecipe] = useState({});
 
    useEffect(() => {
-      axios.get(`http://localhost:3001/recipes/${id}`).then(({ data }) => {
+      axios.get(`https://food-project-production.up.railway.app/recipes/${id}`).then(({ data }) => {
          if (data.id) {
             setRecipe(data);
          } else {
