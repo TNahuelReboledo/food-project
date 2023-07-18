@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import style from "./Landing.module.css";
 import food from "../../assets/food-landing.png";
-import home from "../../assets/home.svg";
 
 function Landing() {
    return (
@@ -15,7 +14,6 @@ function Landing() {
          <NavLink to="/home">
             <button className={style.button_to_home}>
                <span>
-                  {/* <img className={style.home_svg} src={home} /> */}
                   go home...
                </span>
             </button>

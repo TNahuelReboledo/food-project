@@ -35,7 +35,7 @@ function Form() {
    const handlerSubmit = async (event) => {
       event.preventDefault();
       try {
-         await axios.post(`https://food-project-production.up.railway.app/recipes`, form);
+         await axios.post(`http://localhost:3001/recipes`, form);
          alert(`receta creada`);
       } catch (error) {
          alert(`No se pudo crear la receta`);
